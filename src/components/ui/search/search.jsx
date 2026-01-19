@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { SearchContext } from "../../../contexts/search-context";
 
-function Search() {
+
+function Search({ search, setSearch }) {
     const navigate = useNavigate();
-    const { search, setSearch } = useContext(SearchContext);
     function goToSearch() {
         navigate('/search');
     }

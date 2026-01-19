@@ -1,0 +1,1 @@
+export { default as BarChart } from '../charts/bar-chart/bar-chart';

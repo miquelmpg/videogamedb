@@ -22,13 +22,13 @@ function Footer() {
         <div style={{backgroundColor: '#202020'}}>
             <div className='text-center text-white fw-bold fs-3'>Recent activity</div>
             <div className='d-flex justify-content-center align-items-center gap-3'>
-                {RecentActivityStorage.recentActivityGames.length > 6 && <div className="fa fa-angle-left text-white" onClick={() => subtractOneToImageNumber()}></div>}
-                {RecentActivityStorage.recentActivityGames.length === 0 && <div className='text-white'>There hasn’t been any recent activity yet.</div>}
+                {RecentActivityStorage.recentActivityGames.length > 6 && <div className="fa fa-angle-left btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center" style={{ width: '35px', height: 'auto'}} onClick={() => subtractOneToImageNumber()}></div>}
+                {RecentActivityStorage.recentActivityGames.length === 0 && <div className='text-white'>There hasn't been any recent activity yet.</div>}
                 {RecentActivityStorage.recentActivityGames.length > 0 && <div className='d-flex gap-5'><GameList game={recentActivityGames} footer/></div>}
-                {RecentActivityStorage.recentActivityGames.length > 6 && <div className="fa fa-angle-right text-white" onClick={() => addOneToImageNumber(RecentActivityStorage.recentActivityGames)}></div>}
+                {RecentActivityStorage.recentActivityGames.length > 6 && <div className="fa fa-angle-right btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center" style={{ width: '35px', height: 'auto'}} onClick={() => addOneToImageNumber(RecentActivityStorage.recentActivityGames)}></div>}
             </div>
             <hr style={{color:'red'}} />
-            <div className='text-center text-white fw-bold fs-3'>Developed</div>
+            <div className='text-center text-white fw-bold fs-5'>Developed by Miquel Piña Grau</div>
         </div>
     );
 }

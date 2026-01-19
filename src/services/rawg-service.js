@@ -48,15 +48,15 @@ export const getPostById = async (gameId) => {
     }
 }
 
-export const getVideoGamesByGenre = async (genre, platform) => {
+export const getVideoGamesByGenre = async (genre, platform, page, elements) => {
     try {
-        const gameGenre = await http.get(`/games?${genre}${platform}`);
+        const gameGenre = await http.get(`/games?${genre}${platform}&page=${page}&page_size=${elements}`);
         return gameGenre.results;
     } catch (error) {
         console.log('An error has occurred obtaining video game data', error);
     }
 }
-// &parent_platforms=${platform}
+
 export const getVideoGamesBySearch = async (search) => {
     try {
         const gameSearch = await http.get(`/games?search=${search}&page_size=1`);
@@ -66,6 +66,11 @@ export const getVideoGamesBySearch = async (search) => {
     }
 }
 
-// https://www.reddit.com/r/subreddit/comments/postid.json
-// Endpoint: https://oauth.reddit.com/r/<subreddit>/search o /comments/<postid>
-// https://www.reddit.com/u/Whereonatrain
+export const getDashboardData = async (genre, elements) => {
+    try {
+        const gameGenre = await http.get(`/games?${genre}&page_size=${elements}`);
+        return gameGenre.results;
+    } catch (error) {
+        console.log('An error has occurred obtaining video game data', error);
+    }
+}

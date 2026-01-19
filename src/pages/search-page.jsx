@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { GameList } from "../components/games";
 import * as RawgService from '../services/rawg-service';
 import { SearchContext } from "../contexts/search-context";
+import loadingIcon from '../assets/icons/pacman.svg';
+import { Layout } from "../components/ui";
 
 function SearchPage() {
     const { search } = useContext(SearchContext);
@@ -17,7 +19,12 @@ function SearchPage() {
     
     return (
         <>
+        <Layout>
+            {!filteredGames && <div>
+                                <img src={loadingIcon} alt="Loading..."/>
+                            </div>}
             <GameList game={filteredGames} home/>
+        </Layout>
         </>
     );
 }

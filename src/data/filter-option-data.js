@@ -21,7 +21,7 @@ export const genreOptions = [
     { value: 'genres=card', label: 'Card' },
 ];
 
-export const ParentPlatformOptions = [
+export const parentPlatformOptions = [
     { value: '', label: 'ALL' },
     { value: '&parent_platforms=1', label: 'PC' },
     { value: '&parent_platforms=2', label: 'PlayStation' },
@@ -37,4 +37,20 @@ export const ParentPlatformOptions = [
     { value: '&parent_platforms=12', label: '3do' },
     { value: '&parent_platforms=13', label: 'Neo Geo' },
     { value: '&parent_platforms=14', label: 'Web' },
+];
+
+export function fieldSort(field, sort) {
+    return sort === 'asc' ? `&ordering=${field}` : `&ordering=-${field}`;
+}
+
+export const sortFields = [
+  'name',           // Nombre del juego
+  'released',       // Fecha de lanzamiento
+  'added',          // Cantidad de usuarios que añadieron el juego
+  'created',        // Fecha de creación en RAWG
+  'updated',        // Fecha de última actualización
+  'rating',         // Promedio de rating (0-5)
+  'metacritic',     // Metacritic (0-100)
+  'playtime',       // Tiempo promedio jugado
+  'suggestions_count' // Sugerencias de RAWG
 ];

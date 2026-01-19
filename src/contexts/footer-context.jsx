@@ -1,10 +1,11 @@
 import { createContext, useState } from "react";
+import * as RecentActivityStorage from '../services/recent-activity-storage';
 
 const FooterContext = createContext();
 
 function FooterProviderWrapper({ children }) {
     const [toggle, setToggle] = useState(true);
-    const [numImage, setNumImage] = useState(0);
+    const [numImage, setNumImage] = useState(RecentActivityStorage.recentActivityGames.length - 6);
 
     function toggleFooter() {
         setToggle((prev) => !prev);
