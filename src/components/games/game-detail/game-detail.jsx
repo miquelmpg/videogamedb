@@ -42,7 +42,7 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                                     <div>Average Playtime: {playtime} HOURS</div>
                                     <div className="d-flex align-items-baseline gap-3">
                                         <div>Users rating:</div>
-                                        <div className="d-flex align-items-center fw-bold" style={{backgroundColor: `${ScoreUtils.ratingScore(rating)}`, borderRadius: '50%', width: '40px', height: '40px'}}>{rating}</div>
+                                        <div className="d-flex align-items-center fw-bold justify-content-center" style={{backgroundColor: `${ScoreUtils.ratingScore(rating)}`, borderRadius: '50%', width: '40px', height: '40px'}}>{rating}</div>
                                     </div>
                                     <div className="d-flex gap-3">Genre: {genres.map((genre, index) => <div key={index}>{genre.name}</div>)}</div>
                                     <div className="d-flex gap-3">Publishers: {publishers.map((publisher, index) => <div key={index}>{publisher.name}</div>)}</div>
@@ -75,7 +75,7 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                             <div className="text-center fs-1">{name} reviews</div>
                             <PostList post={post}/>
                         </div>
-                        
+                                                
                     </div>
                 </Layout>
             </Jumbotron>

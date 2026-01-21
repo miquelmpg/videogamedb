@@ -13,7 +13,7 @@ function App() {
           <Navbar/>
           <main className="flex-fill">
               <Routes>
-                <Route path='/' element={<HomePage/>} />
+                {/* <Route path='/' element={<HomePage/>} /> */}
                 <Route path='/games/:id' element={<DetailPage/>} />
                 <Route path='/search' element={<SearchPage/>} />
                 <Route path='/register' element={<RegisterPage/>} />

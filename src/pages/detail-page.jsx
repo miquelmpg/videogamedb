@@ -9,6 +9,7 @@ function DetailPage() {
     const [game, setGame] = useState(null);
     console.log(game)
     const { id } = useParams();
+    console.log(id)
     useEffect(() => {
         async function getGame() {
             const data = await RawgService.getVideoGameById(id);
@@ -21,9 +22,10 @@ function DetailPage() {
     }, []);
     return (
         <>
-            {!game && <div>
-                                <img src={loadingIcon} alt="Loading..."/>
-                            </div>}
+            {!game && <Layout><div>
+                        <img src={loadingIcon} alt="Loading..."/>
+                    </div>
+            </Layout>}
             {game && <GameDetail {...game}/>}
         </>
     );

@@ -39,18 +39,80 @@ export const parentPlatformOptions = [
     { value: '&parent_platforms=14', label: 'Web' },
 ];
 
+export const  parameterOptions = [
+    { value: 'rating', label: 'Rating' },
+    { value: 'metacritic', label: 'Metacritic' },
+    { value: 'playtime', label: 'Playtime' },
+    { value: 'suggestions_count', label: 'Suggestions' }
+];
+
 export function fieldSort(field, sort) {
     return sort === 'asc' ? `&ordering=${field}` : `&ordering=-${field}`;
 }
 
-export const sortFields = [
-  'name',           // Nombre del juego
-  'released',       // Fecha de lanzamiento
-  'added',          // Cantidad de usuarios que añadieron el juego
-  'created',        // Fecha de creación en RAWG
-  'updated',        // Fecha de última actualización
-  'rating',         // Promedio de rating (0-5)
-  'metacritic',     // Metacritic (0-100)
-  'playtime',       // Tiempo promedio jugado
-  'suggestions_count' // Sugerencias de RAWG
+export const sortFieldsOptions = [
+    { value: '', label: 'None' },
+    { value: 'name', label: 'Name' },
+    { value: 'released', label: 'Release Date' },
+    { value: 'added', label: 'Users Added' },
+    { value: 'created', label: 'Creation Date' },
+    { value: 'updated', label: 'Last Update' },
+    { value: 'rating', label: 'Rating' },
+    { value: 'metacritic', label: 'Metacritic' },
+    { value: 'playtime', label: 'Playtime' },
+    { value: 'suggestions_count', label: 'Suggestions' }
+];
+
+export const platformOptions = [
+    { value: "", label: "ALL" },
+    { value: "&platforms=4", label: "PC" },
+    { value: "&platforms=187", label: "PlayStation 5" },
+    { value: "&platforms=18", label: "PlayStation 4" },
+    { value: "&platforms=16", label: "PlayStation 3" },
+    { value: "&platforms=15", label: "PlayStation 2" },
+    { value: "&platforms=27", label: "PlayStation 1" },
+    { value: "&platforms=17", label: "PSP" },
+    { value: "&platforms=19", label: "PS Vita" },
+    { value: "&platforms=186", label: "Xbox Series X/S" },
+    { value: "&platforms=1", label: "Xbox One" },
+    { value: "&platforms=14", label: "Xbox 360" },
+    { value: "&platforms=80", label: "Xbox (Original)" },
+    { value: "&platforms=7", label: "Nintendo Switch" },
+    { value: "&platforms=8", label: "Nintendo 3DS" },
+    { value: "&platforms=9", label: "Nintendo DS" },
+    { value: "&platforms=13", label: "Nintendo DSi" },
+    { value: "&platforms=10", label: "Wii U" },
+    { value: "&platforms=11", label: "Wii" },
+    { value: "&platforms=105", label: "GameCube" },
+    { value: "&platforms=83", label: "Nintendo 64" },
+    { value: "&platforms=79", label: "SNES" },
+    { value: "&platforms=49", label: "NES" },
+    { value: "&platforms=24", label: "Game Boy Advance" },
+    { value: "&platforms=43", label: "Game Boy Color" },
+    { value: "&platforms=26", label: "Game Boy" },
+    { value: "&platforms=167", label: "Genesis" },
+    { value: "&platforms=106", label: "Dreamcast" },
+    { value: "&platforms=107", label: "SEGA Saturn" },
+    { value: "&platforms=119", label: "SEGA CD" },
+    { value: "&platforms=117", label: "SEGA 32X" },
+    { value: "&platforms=74", label: "SEGA Master System" },
+    { value: "&platforms=23", label: "Atari 2600" },
+    { value: "&platforms=31", label: "Atari 5200" },
+    { value: "&platforms=28", label: "Atari 7800" },
+    { value: "&platforms=22", label: "Atari Flashback" },
+    { value: "&platforms=25", label: "Atari 8-bit" },
+    { value: "&platforms=34", label: "Atari ST" },
+    { value: "&platforms=46", label: "Atari Lynx" },
+    { value: "&platforms=50", label: "Atari XEGS" },
+    { value: "&platforms=112", label: "Jaguar" },
+    { value: "&platforms=77", label: "Game Gear" },
+    { value: "&platforms=12", label: "Neo Geo" },
+    { value: "&platforms=21", label: "Android" },
+    { value: "&platforms=3", label: "iOS" },
+    { value: "&platforms=5", label: "macOS" },
+    { value: "&platforms=55", label: "Classic Macintosh" },
+    { value: "&platforms=6", label: "Linux" },
+    { value: "&platforms=111", label: "3DO" },
+    { value: "&platforms=41", label: "Apple II" },
+    { value: "&platforms=166", label: "Commodore / Amiga" }
 ];
