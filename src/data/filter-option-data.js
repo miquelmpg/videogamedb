@@ -1,5 +1,5 @@
 export const genreOptions = [
-    { value: '', label: 'ALL' },
+    { value: '', label: 'Genre' },
     { value: 'genres=action', label: 'Action' },
     { value: 'genres=role-playing-games-rpg', label: 'RPG' },
     { value: 'genres=casual', label: 'Casual' },
@@ -22,7 +22,7 @@ export const genreOptions = [
 ];
 
 export const parentPlatformOptions = [
-    { value: '', label: 'ALL' },
+    { value: '', label: 'Parent Platform' },
     { value: '&parent_platforms=1', label: 'PC' },
     { value: '&parent_platforms=2', label: 'PlayStation' },
     { value: '&parent_platforms=3', label: 'Xbox' },
@@ -46,25 +46,8 @@ export const  parameterOptions = [
     { value: 'suggestions_count', label: 'Suggestions' }
 ];
 
-export function fieldSort(field, sort) {
-    return sort === 'asc' ? `&ordering=${field}` : `&ordering=-${field}`;
-}
-
-export const sortFieldsOptions = [
-    { value: '', label: 'None' },
-    { value: 'name', label: 'Name' },
-    { value: 'released', label: 'Release Date' },
-    { value: 'added', label: 'Users Added' },
-    { value: 'created', label: 'Creation Date' },
-    { value: 'updated', label: 'Last Update' },
-    { value: 'rating', label: 'Rating' },
-    { value: 'metacritic', label: 'Metacritic' },
-    { value: 'playtime', label: 'Playtime' },
-    { value: 'suggestions_count', label: 'Suggestions' }
-];
-
 export const platformOptions = [
-    { value: "", label: "ALL" },
+    { value: "", label: "Platform" },
     { value: "&platforms=4", label: "PC" },
     { value: "&platforms=187", label: "PlayStation 5" },
     { value: "&platforms=18", label: "PlayStation 4" },

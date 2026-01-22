@@ -41,11 +41,9 @@ function HomePage() {
         <Layout>
             <div className="d-flex justify-content-center gap-5">
                 <div className='text-center fs-2' style={{width: '25%'}}>
-                    <div>Genre Filter</div>
                     <GameFilter value={genre} onChange={setGenre} filterOptions={FilterData.genreOptions}/>
                 </div>
                 <div className='text-center fs-2' style={{width: '25%'}}>
-                    <div>Platform Filter</div>
                     <GameFilter value={platform} onChange={setPlatform} filterOptions={FilterData.parentPlatformOptions}/>
                 </div>
             </div>

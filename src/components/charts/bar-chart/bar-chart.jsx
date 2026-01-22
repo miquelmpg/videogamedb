@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useNavigate } from 'react-router-dom';
+import * as RecentActivityStorage from '../../../services/recent-activity-storage';
 
 function RatingBarChart({ data, parameter }) {
     const navigate = useNavigate();
@@ -13,7 +14,12 @@ function RatingBarChart({ data, parameter }) {
                 <YAxis domain={[0, 5]} />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey={parameter} fill="#8884d8" onClick={(data) => {navigate(`/games/${data.payload.id}`)}}/>
+                <Bar dataKey={parameter} 
+                    fill="#8884d8" 
+                    onClick={(data) => {{
+                        navigate(`/games/${data.payload.id}`)
+                        RecentActivityStorage.recentActivityGames.push(data.payload.id)
+                        RecentActivityStorage.store()}}}/>
             </BarChart>
         </ResponsiveContainer>
     );

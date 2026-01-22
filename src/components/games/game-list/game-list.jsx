@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { FooterContext } from "../../../contexts/footer-context";
 
 function GameList({ game, home, footer }) {
-    const { numImage } = useContext(FooterContext)
+    const { numImage } = useContext(FooterContext);
+
     return (
         <>
             {home && <div className="row row-cols-6 gap-3 justify-content-start">

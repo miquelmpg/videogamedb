@@ -39,7 +39,7 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                                 <div className="d-flex flex-column gap-2 fs-5 fw-semibold">
                                     <div>Release date: {DateUtils.dateToString(released)[0]}</div>
                                     <div className="d-flex gap-3">Platforms: {parent_platforms.map((platform, index) => <div key={index}>{platform.platform.name}</div>)}</div>
-                                    <div>Average Playtime: {playtime} HOURS</div>
+                                    <div>Playtime: {playtime} HOURS</div>
                                     <div className="d-flex align-items-baseline gap-3">
                                         <div>Users rating:</div>
                                         <div className="d-flex align-items-center fw-bold justify-content-center" style={{backgroundColor: `${ScoreUtils.ratingScore(rating)}`, borderRadius: '50%', width: '40px', height: '40px'}}>{rating}</div>

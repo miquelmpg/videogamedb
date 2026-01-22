@@ -20,9 +20,6 @@ function Navbar() {
                 </ul>
                 <ul className="navbar-nav mb-2 mb-lg-0">
                     <li className="nav-item">
-                        <NavLink className={`nav-link text-white`} to={'/favorites'}>Favorites</NavLink>
-                    </li>
-                    <li className="nav-item">
                         <NavLink className={({ isActive }) => `nav-link text-white ${isActive ? "fw-bold" : ""}`} to={'/dashboard'}>Dashboard</NavLink>
                     </li>
                     <li className="nav-item">

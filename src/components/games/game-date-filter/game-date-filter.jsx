@@ -1,37 +1,26 @@
-function GameDateFilter({ date, setDate, initial, final }) {
+function GameDateFilter({ setDate, initial, final }) {
     return (
         <>
             {initial && <div>
-                            <label htmlFor="date">Selecciona una fecha:</label>
                             <input
+                                className="form-select rounded-pill"
+                                style={{width: '150px'}}
                                 type="text"
                                 name="date"
                                 placeholder='YYYY-MM-DD'
                                 pattern="\d{4}-\d{2}-\d{2}"
-                                required
                                 onChange={(e) => e.target.value ? setDate(`&dates=${e.target.value}`) : setDate('')}/>
-                            <p>Fecha seleccionada: {date}</p>
                         </div>}
             {final && <div>
-                            <label htmlFor="date">Selecciona una fecha:</label>
                             <input
+                                className="form-select rounded-pill"
+                                style={{width: '150px'}}
                                 type="text"
                                 name="date"
                                 placeholder='YYYY-MM-DD'
                                 pattern="\d{4}-\d{2}-\d{2}"
-                                required
-                                onChange={(e) => e.target.value ? setDate(`&dates=${e.target.value}`) : setDate('')}/>
-                            <p>Fecha seleccionada: {date}</p>
+                                onChange={(e) => e.target.value ? setDate(`,${e.target.value}`) : setDate('')}/>
                         </div>}
-            {/* {final && <div>
-                            <label htmlFor="date">Selecciona una fecha:</label>
-                            <input
-                                type="date"
-                                id="date"
-                                value={date}
-                                onChange={(e) => e.target.value === '' ? setDate('') : setDate(`,${e.target.value}`)}/>
-                            <p>Fecha seleccionada: {date}</p>
-                        </div>} */}
         </>
         
     );
