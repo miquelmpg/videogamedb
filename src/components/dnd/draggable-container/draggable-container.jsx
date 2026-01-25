@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDraggable } from "@dnd-kit/core";
 
 function DraggableContainer({ id, children }) {
@@ -15,6 +15,7 @@ function DraggableContainer({ id, children }) {
     position: "absolute",
     cursor: "grab",
     touchAction: "none",
+    overflowY: 'hidden',
     transform: `translate(${x}px, ${y}px)`,
   };
 
@@ -30,7 +31,7 @@ function DraggableContainer({ id, children }) {
 
   return (
     <div
-      ref={setNodeRef}
+      ref={setNodeRef} 
       style={style}
       {...listeners}
       {...attributes}

@@ -50,7 +50,7 @@ function HomePage() {
             {!gameGenre && <div>
                                 <img src={loadingIcon} alt="Loading..."/>
                             </div>}
-            {gameGenre && <GameList game={gameGenre} home/>}
+            {gameGenre && <GameList game={gameGenre} home footer={false}/>}
             <div className="d-flex gap-5 justify-content-center text-center fs-5">
                 <div>
                     <div>Current Page:</div>

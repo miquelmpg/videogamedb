@@ -5,7 +5,7 @@ const FooterContext = createContext();
 
 function FooterProviderWrapper({ children }) {
     const [toggle, setToggle] = useState(true);
-    const [numImage, setNumImage] = useState(RecentActivityStorage.recentActivityGames.length - 6);
+    const [numImage, setNumImage] = useState(0);
 
     function toggleFooter() {
         setToggle((prev) => !prev);
@@ -20,7 +20,7 @@ function FooterProviderWrapper({ children }) {
     }
 
     return (
-        <FooterContext.Provider value={{toggle, toggleFooter, numImage, addOneToImageNumber, subtractOneToImageNumber}}>
+        <FooterContext.Provider value={{toggle, toggleFooter, numImage, setNumImage, addOneToImageNumber, subtractOneToImageNumber}}>
             {children}
         </FooterContext.Provider>
     );

@@ -12,21 +12,28 @@ function DetailPage() {
     console.log(id)
     useEffect(() => {
         async function getGame() {
-            const data = await RawgService.getVideoGameById(id);
-            const trailer = await RawgService.getTrailerById(id);
-            const post = await RawgService.getPostById(id);
-            const screenshots = await RawgService.getScreenshotsById(id);
-            setGame({...data, trailer: trailer, screenshots: screenshots, post: post});
+
+            const [data, trailer, post, screenshots] = await Promise.all([
+                RawgService.getVideoGameById(id),
+                RawgService.getTrailerById(id),
+                RawgService.getPostById(id),
+                RawgService.getScreenshotsById(id)
+            ]);
+
+            setGame({ ...data, trailer: trailer, screenshots: screenshots, post: post });
         }
         getGame();
     }, []);
     return (
         <>
-            {!game && <Layout><div>
-                        <img src={loadingIcon} alt="Loading..."/>
+            {!game && (
+                <Layout>
+                    <div>
+                        <img src={loadingIcon} alt="Loading..." />
                     </div>
-            </Layout>}
-            {game && <GameDetail {...game}/>}
+                </Layout>
+            )}
+            {game && <GameDetail {...game} />}
         </>
     );
 }

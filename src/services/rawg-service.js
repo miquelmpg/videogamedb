@@ -60,7 +60,7 @@ export const getVideoGamesByGenre = async (genre, platform, page, elements) => {
 
 export const getVideoGamesBySearch = async (search) => {
     try {
-        const gameSearch = await http.get(`/games?search=${search}&page_size=1`);
+        const gameSearch = await http.get(`/games?search=${search}`);
         return gameSearch.results;
     } catch (error) {
         console.log('An error has occurred obtaining video game data', error);

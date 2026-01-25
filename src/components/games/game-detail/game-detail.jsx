@@ -38,7 +38,7 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                                 <div className="fw-bold" style={{fontSize: '50px'}}>{name}</div>
                                 <div className="d-flex flex-column gap-2 fs-5 fw-semibold">
                                     <div>Release date: {DateUtils.dateToString(released)[0]}</div>
-                                    <div className="d-flex gap-3">Platforms: {parent_platforms.map((platform, index) => <div key={index}>{platform.platform.name}</div>)}</div>
+                                    <div className="d-flex flex-wrap gap-3">Platforms: {parent_platforms.map((platform, index) => <div key={index}>{platform.platform.name}</div>)}</div>
                                     <div>Playtime: {playtime} HOURS</div>
                                     <div className="d-flex align-items-baseline gap-3">
                                         <div>Users rating:</div>
@@ -75,7 +75,6 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                             <div className="text-center fs-1">{name} reviews</div>
                             <PostList post={post}/>
                         </div>
-                                                
                     </div>
                 </Layout>
             </Jumbotron>

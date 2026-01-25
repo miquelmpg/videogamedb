@@ -10,7 +10,14 @@ function Search({ search, setSearch }) {
         <nav className="navbar">
             <div className="mx-auto" style={{width: '100%'}}>
                 <div className="d-flex" role="search">
-                    <input className="form-control me-2 rounded-pill" type="search" placeholder="Search" value={search} onFocus={goToSearch} onChange={(event) => setSearch(event.target.value)}/>
+                    <input 
+                        className="form-control me-2 rounded-pill"
+                        type="search" 
+                        placeholder="Search" 
+                        value={search} 
+                        onFocus={goToSearch} 
+                        onBlur={() => setSearch("")}
+                        onChange={(event) => setSearch(event.target.value)}/>
                 </div>
             </div>
         </nav>
