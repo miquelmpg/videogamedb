@@ -36,7 +36,7 @@ function LineTimeChart({ data, parameter }) {
             activeDot={{ r: 8, onClick: (e, dataSorted) => {
                 navigate(`/games/${dataSorted.payload.id}`);
                 storeGameRecentActivity(dataSorted.payload.id);
-                }}} />
+                }}}/>
         <Line type="monotone" dataKey='name' stroke="#82ca9d" />
         </LineChart>
         </ResponsiveContainer>

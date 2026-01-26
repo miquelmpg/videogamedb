@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BarChart, LineTimeChart, KPI} from '../components/charts';
+import { BarChart, LineTimeChart, KPI, RatingsPieChart } from '../components/charts';
 import { GameFilter, GameDateFilter } from '../components/games';
 import loadingIcon from '../assets/icons/pacman.svg';
 import * as RawgService from '../services/rawg-service';
@@ -21,7 +21,7 @@ function DashboardPage() {
     const [sortMode, setSortMode] = useState(SORT_MODE_ASC);
     const [numPage, setNumPage] = useState(1);
     const [numElements, setNumElements] = useState(18);
-    console.log(data)
+    const [dataPie, setDataPie] = useState();
 
     useEffect(() => {
         async function getDashboardData() {
@@ -97,10 +97,14 @@ function DashboardPage() {
                         {data.length > 0 && <>
                                                 <div className='d-flex'>
                                                     <KPI data={data} parameter={parameter}/>
-                                                    <BarChart data={data} parameter={parameter}/>
+                                                    <BarChart data={data} setDataPie={setDataPie} parameter={parameter}/>
                                                 </div>
                                                 <div className='d-flex gap-5'>
                                                     <LineTimeChart data={data} parameter={parameter}/>
+                                                    {dataPie && <div>  
+                                                                    <div>{data.find((game) => game.id === dataPie) ?.name}</div>
+                                                                    <RatingsPieChart data={data.find((game) => game.id === dataPie)}></RatingsPieChart>
+                                                                </div>}
                                                 </div>
                                             </>}
                         {data.length === 0 && <>

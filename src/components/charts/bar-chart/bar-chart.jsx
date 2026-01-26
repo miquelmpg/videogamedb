@@ -4,7 +4,7 @@ import * as RecentActivityStorage from '../../../services/recent-activity-storag
 import { useContext } from 'react';
 import { FooterContext } from '../../../contexts/footer-context';
 
-function RatingBarChart({ data, parameter }) {
+function RatingBarChart({ data, parameter, setDataPie }) {
     const navigate = useNavigate();
     const { toggleFooter } = useContext(FooterContext);
 
@@ -28,7 +28,8 @@ function RatingBarChart({ data, parameter }) {
                     fill="#8884d8" 
                     onClick={(data) => {{
                         navigate(`/games/${data.payload.id}`);
-                        storeGameRecentActivity(data.payload.id);}}}/>
+                        storeGameRecentActivity(data.payload.id);}}}
+                    onMouseEnter={(data) => setDataPie(data.payload.id)}/>
             </BarChart>
         </ResponsiveContainer>
     );

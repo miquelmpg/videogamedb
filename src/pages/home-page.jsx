@@ -11,6 +11,7 @@ function HomePage() {
     const [platform, setPlatform] = useState('');
     const [numPage, setNumPage] = useState(1);
     const [numElements, setNumElements] = useState(18);
+    console.log(gameGenre)
     
     useEffect(() => {
         async function getGamesByGenre() {
