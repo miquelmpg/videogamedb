@@ -12,7 +12,7 @@ function PostItem({ name, created, username, image }) {
                         <div><i className='fa fa-calendar'></i> {DateUtils.dateToString(created)[0]}</div>
                         <div><i className='fa fa-hourglass'></i> {DateUtils.dateToString(created)[1]}</div>
                     </div>
-                    <a href={RedditService.getRedditPostByUser(username)} style={{position: 'absolute', top: '15px', right: '20px'}}><i className="fa fa-reddit fa-lg" style={{color: '#FF4500'}}></i></a>
+                    <a href={RedditService.getRedditPostByUser(username)} target="_blank" rel="noopener noreferrer" style={{position: 'absolute', top: '15px', right: '20px'}}><i className="fa fa-reddit fa-lg" style={{color: '#FF4500'}}></i></a>
                 </div>
             </div>
             <div>{name}</div>

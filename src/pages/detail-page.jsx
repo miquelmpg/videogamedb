@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { GameDetail } from '../components/games';
 import * as RawgService from '../services/rawg-service';
 import loadingIcon from '../assets/icons/pacman.svg';
-import { Layout } from '../components/ui';
+import { Layout, Loading} from '../components/ui';
 
 function DetailPage() {
     const [game, setGame] = useState(null);
@@ -28,9 +28,7 @@ function DetailPage() {
         <>
             {!game && (
                 <Layout>
-                    <div>
-                        <img src={loadingIcon} alt="Loading..." />
-                    </div>
+                    <Loading loading={game}/>
                 </Layout>
             )}
             {game && <GameDetail {...game} />}

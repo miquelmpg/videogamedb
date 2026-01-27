@@ -46,7 +46,7 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                                     </div>
                                     <div className="d-flex gap-3">Genre: {genres.map((genre, index) => <div key={index}>{genre.name}</div>)}</div>
                                     <div className="d-flex gap-3">Publishers: {publishers.map((publisher, index) => <div key={index}>{publisher.name}</div>)}</div>
-                                    <a className='text-white' href={website}>{website}</a>
+                                    <a className='text-white' href={website} target="_blank" rel="noopener noreferrer">{website}</a>
                                     <div className='fs-5' style={{overflow: 'hidden', maxHeight: readMore ? '1000px' : '300px', textAlign: 'justify'}}>{description_raw}</div>
                                     <div className='btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center fw-bold' onClick={readMoreToggle}>{!readMore ? 'Read More' : 'Read Less'}</div>
                                 </div>
@@ -71,10 +71,10 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        {post.results.length > 0 && <div>
                             <div className="text-center fs-1">{name} reviews</div>
                             <PostList post={post}/>
-                        </div>
+                        </div>}
                     </div>
                 </Layout>
             </Jumbotron>

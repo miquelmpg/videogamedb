@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GameList, GameFilter } from "../components/games";
-import { Layout } from "../components/ui";
+import { Layout, Loading } from "../components/ui";
 import * as RawgService from '../services/rawg-service';
 import * as FilterData from '../data/filter-option-data';
 import loadingIcon from '../assets/icons/pacman.svg'
@@ -40,6 +40,7 @@ function HomePage() {
     
     return (
         <Layout>
+            <Loading loading={gameGenre}/>
             <div className="d-flex justify-content-center gap-5">
                 <div className='text-center fs-2' style={{width: '25%'}}>
                     <GameFilter value={genre} onChange={setGenre} filterOptions={FilterData.genreOptions}/>
@@ -48,9 +49,6 @@ function HomePage() {
                     <GameFilter value={platform} onChange={setPlatform} filterOptions={FilterData.parentPlatformOptions}/>
                 </div>
             </div>
-            {!gameGenre && <div>
-                                <img src={loadingIcon} alt="Loading..."/>
-                            </div>}
             {gameGenre && <GameList game={gameGenre} home footer={false}/>}
             <div className="d-flex gap-5 justify-content-center text-center fs-5">
                 <div>

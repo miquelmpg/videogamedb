@@ -6,6 +6,7 @@ import { FooterProviderWrapper } from "./contexts/footer-context";
 import Favorites from "./components/favorites/favorites";
 import { DndContext } from "@dnd-kit/core";
 import { FavoriteProviderWrapper } from "./contexts/favorite-context";
+import { PrivateRoute } from './guards';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
                       <Route path='/search' element={<SearchPage/>} />
                       <Route path='/register' element={<RegisterPage/>} />
                       <Route path='/login' element={<LoginPage/>} />
-                      <Route path='/dashboard' element={<DashboardPage/>} />
+                      <Route path='/dashboard' element={<PrivateRoute><DashboardPage/></PrivateRoute>} />
                     </Routes>
                 </main>  
                 </SearchProviderWrapper>

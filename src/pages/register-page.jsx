@@ -1,7 +1,9 @@
+import { RegisterForm } from "../components/users";
+
 function RegisterPage() {
     return (
         <>
-        Register
+        <RegisterForm/>
         </>
     );
 }

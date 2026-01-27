@@ -1,7 +1,9 @@
+import { LoginForm } from "../components/users";
+
 function LoginPage() {
     return (
         <>
-        Login
+        <LoginForm/>
         </>
     );
 }

@@ -4,7 +4,7 @@ import { GameFilter, GameDateFilter } from '../components/games';
 import loadingIcon from '../assets/icons/pacman.svg';
 import * as RawgService from '../services/rawg-service';
 import * as FilterData from '../data/filter-option-data';
-import { Layout } from '../components/ui';
+import { Layout, Loading } from '../components/ui';
 
 const SORT_MODE_ASC = 'asc';
 const SORT_MODE_DESC = 'desc';
@@ -16,7 +16,6 @@ function DashboardPage() {
     const [platform, setPlatform] = useState('');
     const [initialDate, setInitialDate] = useState('');
     const [finalDate, setFinalDate] = useState('');
-    // const [date, setDate] = useState(`${initialDate}${finalDate}`);
     const [parameter, setParameter] = useState('rating');
     const [sortMode, setSortMode] = useState(SORT_MODE_ASC);
     const [numPage, setNumPage] = useState(1);
@@ -56,10 +55,7 @@ function DashboardPage() {
 
     return (
         <> <Layout>
-            {!data && <div>
-                        <img src={loadingIcon} alt="Loading..."/>
-                    </div>}
-            {/* {data && data.length === 0 && <div>No data avaliable</div>} */}
+            <Loading loading={data}/>
             {data && <> 
                         <div className='d-flex flex-column gap-3'>
                             <div className='d-flex text-center mx-auto gap-3' style={{width: '100%'}}>
