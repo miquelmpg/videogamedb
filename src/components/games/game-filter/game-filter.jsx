@@ -10,7 +10,7 @@ function GameFilter({ value, onChange, filterOptions }) {
                 onChange={(option) => {
                     onChange((option.value))
                 }}
-                isSearchable={false}
+                isSearchable={true}
                 styles={{
                     container: (base) => ({
                         ...base,

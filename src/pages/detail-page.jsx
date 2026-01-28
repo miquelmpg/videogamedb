@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GameDetail } from '../components/games';
 import * as RawgService from '../services/rawg-service';
-import loadingIcon from '../assets/icons/pacman.svg';
 import { Layout, Loading} from '../components/ui';
 
 function DetailPage() {

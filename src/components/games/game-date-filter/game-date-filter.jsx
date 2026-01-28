@@ -1,4 +1,4 @@
-function GameDateFilter({ setDate, initial, final }) {
+function GameDateFilter({ value, setDate, initial, final }) {
     return (
         <>
             {initial && <div>
@@ -7,9 +7,10 @@ function GameDateFilter({ setDate, initial, final }) {
                                 style={{width: '150px'}}
                                 type="text"
                                 name="date"
+                                value={value}
                                 placeholder='YYYY-MM-DD'
                                 pattern="\d{4}-\d{2}-\d{2}"
-                                onChange={(e) => e.target.value ? setDate(`&dates=${e.target.value}`) : setDate('')}/>
+                                onChange={(e) => e.target.value ? setDate(`${e.target.value}`) : setDate('')}/>
                         </div>}
             {final && <div>
                             <input
@@ -17,9 +18,10 @@ function GameDateFilter({ setDate, initial, final }) {
                                 style={{width: '150px'}}
                                 type="text"
                                 name="date"
+                                value={value}
                                 placeholder='YYYY-MM-DD'
                                 pattern="\d{4}-\d{2}-\d{2}"
-                                onChange={(e) => e.target.value ? setDate(`,${e.target.value}`) : setDate('')}/>
+                                onChange={(e) => e.target.value ? setDate(`${e.target.value}`) : setDate('')}/>
                         </div>}
         </>
         

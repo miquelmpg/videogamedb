@@ -1,21 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { FooterContext } from "../../../contexts/footer-context";
 import { FavoriteContext } from "../../../contexts/favorite-context";
 import { DraggableItem } from "../../dnd";
 import * as ScoreUtils from '../../../utils/score-utils';
-import * as RecentActivityStorage from '../../../services/recent-activity-storage';
+import useRecentActivity from "../../../hooks/use-recent-activity";
 
 function GameItem({ id, name, background_image, rating, home, footer }) {
-    const { toggleFooter } = useContext(FooterContext);
     const { favoriteToggle } = useContext(FavoriteContext);
+    const { storeGameRecentActivity } = useRecentActivity();
     const navigate = useNavigate();
-
-    function storeGameRecentActivity(id) {
-        !RecentActivityStorage.recentActivityGames.includes(id) ? RecentActivityStorage.recentActivityGames.push(id) : "";
-        RecentActivityStorage.store();
-        toggleFooter();
-    }
 
     function goToDetail() {
         navigate(`{/games/${id}}`);

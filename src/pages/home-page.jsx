@@ -3,14 +3,15 @@ import { GameList, GameFilter } from "../components/games";
 import { Layout, Loading } from "../components/ui";
 import * as RawgService from '../services/rawg-service';
 import * as FilterData from '../data/filter-option-data';
-import loadingIcon from '../assets/icons/pacman.svg'
+import { useSearchParams } from "react-router-dom";
 
 function HomePage() {
+    const [searchParams, setSearchParams] = useSearchParams({});
     const [gameGenre, SetGameGenre] = useState(null);
-    const [genre, setGenre] = useState('');
-    const [platform, setPlatform] = useState('');
-    const [numPage, setNumPage] = useState(1);
-    const [numElements, setNumElements] = useState(18);
+    const [genre, setGenre] = useState(searchParams.get("genre") || "");
+    const [platform, setPlatform] = useState(searchParams.get("parent platform") || "");
+    const [numPage, setNumPage] = useState(searchParams.get("num page") || 1);
+    const [numElements, setNumElements] = useState(searchParams.get("num elements") || 18);
     console.log(gameGenre)
     
     useEffect(() => {
@@ -18,6 +19,7 @@ function HomePage() {
             const data = await RawgService.getVideoGamesByGenre(genre, platform, numPage, numElements);
             SetGameGenre(data);
         };
+        setSearchParams({ genre: genre, 'parent platform': platform, 'num page': numPage, 'num elements': numElements })
         getGamesByGenre();
     }, [genre, platform, numPage, numElements]);
 

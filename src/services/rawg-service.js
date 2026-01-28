@@ -1,5 +1,4 @@
 import axios from 'axios';
-import * as FilterOptionData from './../data/filter-option-data';
 
 const http = axios.create({
     baseURL: import.meta.env.VITE_RAWG_BASE_API_URL,
@@ -69,9 +68,7 @@ export const getVideoGamesBySearch = async (search) => {
 
 export const getDashboardData = async (genre, parentPlatform, platform, initialDate, finalDate, page, elements) => {
     try {
-        const gameGenre = await http.get(`/games?${genre}${parentPlatform}${platform}${initialDate}${finalDate}&page=${page}&page_size=${elements}`)
-            
-            // (initialDate && finalDate) ? `&dates=${initialDate},${finalDate}` : "" );
+        const gameGenre = await http.get(`/games?${genre}${parentPlatform}${platform}${initialDate && `&dates=${initialDate}`}${finalDate && `,${finalDate}`}&page=${page}&page_size=${elements}`);
         return gameGenre.results;
     } catch (error) {
         console.log('An error has occurred obtaining video game data', error);

@@ -1,18 +1,10 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useNavigate } from 'react-router-dom';
-import * as RecentActivityStorage from '../../../services/recent-activity-storage';
-import { useContext } from 'react';
-import { FooterContext } from '../../../contexts/footer-context';
+import useRecentActivity from '../../../hooks/use-recent-activity';
 
 function RatingBarChart({ data, parameter, setDataPie }) {
     const navigate = useNavigate();
-    const { toggleFooter } = useContext(FooterContext);
-
-    function storeGameRecentActivity(id) {
-            !RecentActivityStorage.recentActivityGames.includes(id) ? RecentActivityStorage.recentActivityGames.push(id) : "";
-            RecentActivityStorage.store();
-            toggleFooter();
-        }
+    const { storeGameRecentActivity } = useRecentActivity();
 
     return (
         <ResponsiveContainer width="100%" height={300}>

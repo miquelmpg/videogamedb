@@ -16,7 +16,7 @@ function Search({ search, setSearch }) {
                         placeholder="Search" 
                         value={search} 
                         onFocus={goToSearch} 
-                        onBlur={() => setSearch("")}
+                        // onBlur={() => setSearch("")}
                         onChange={(event) => setSearch(event.target.value)}/>
                 </div>
             </div>

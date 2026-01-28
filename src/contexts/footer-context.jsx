@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import * as RecentActivityStorage from '../services/recent-activity-storage';
 
 const FooterContext = createContext();
 

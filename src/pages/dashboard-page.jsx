@@ -1,25 +1,26 @@
 import { useEffect, useState } from 'react';
 import { BarChart, LineTimeChart, KPI, RatingsPieChart } from '../components/charts';
 import { GameFilter, GameDateFilter } from '../components/games';
-import loadingIcon from '../assets/icons/pacman.svg';
 import * as RawgService from '../services/rawg-service';
 import * as FilterData from '../data/filter-option-data';
 import { Layout, Loading } from '../components/ui';
+import { useSearchParams } from "react-router-dom";
 
 const SORT_MODE_ASC = 'asc';
 const SORT_MODE_DESC = 'desc';
 
 function DashboardPage() {
+    const [searchParams, setSearchParams] = useSearchParams({});
     const [data, setData] = useState();
-    const [genre, setGenre] = useState('');
-    const [parentPlatform, setParentPlatform] = useState('');
-    const [platform, setPlatform] = useState('');
-    const [initialDate, setInitialDate] = useState('');
-    const [finalDate, setFinalDate] = useState('');
-    const [parameter, setParameter] = useState('rating');
-    const [sortMode, setSortMode] = useState(SORT_MODE_ASC);
-    const [numPage, setNumPage] = useState(1);
-    const [numElements, setNumElements] = useState(18);
+    const [genre, setGenre] = useState(searchParams.get("genre") || "");
+    const [parentPlatform, setParentPlatform] = useState(searchParams.get("parent platform") || "");
+    const [platform, setPlatform] = useState(searchParams.get("platform") || "");
+    const [initialDate, setInitialDate] = useState(searchParams.get("initial date") || "");
+    const [finalDate, setFinalDate] = useState(searchParams.get("final date") || "");
+    const [parameter, setParameter] = useState(searchParams.get("rating") || 'rating');
+    const [sortMode, setSortMode] = useState(searchParams.get("sort mode") || SORT_MODE_ASC);
+    const [numPage, setNumPage] = useState(searchParams.get("num page") || 1);
+    const [numElements, setNumElements] = useState(searchParams.get("num elements") || 18);
     const [dataPie, setDataPie] = useState();
 
     useEffect(() => {
@@ -28,6 +29,7 @@ function DashboardPage() {
             const dataSorted = sortMode === SORT_MODE_ASC ? data.sort((a, b) => a[parameter] - b[parameter]) : data.toSorted((a, b) => b[parameter] - a[parameter]);
             setData(dataSorted);
         }
+        setSearchParams({ genre: genre, 'parent platform': parentPlatform, platform: platform, 'initial date': initialDate, 'final date': finalDate, rating: parameter, 'num page': numPage, 'num elements': numElements, 'sort mode': sortMode })
         getDashboardData();
     }, [genre, parentPlatform, platform, initialDate, finalDate, numPage, numElements, sortMode]);
 
@@ -63,8 +65,8 @@ function DashboardPage() {
                                 <GameFilter value={parentPlatform} onChange={setParentPlatform} filterOptions={FilterData.parentPlatformOptions}/>
                                 <GameFilter value={platform} onChange={setPlatform} filterOptions={FilterData.platformOptions}/>
                                 <GameFilter value={parameter} onChange={setParameter} filterOptions={FilterData.parameterOptions}/>
-                                <GameDateFilter setDate={setInitialDate} initial final={false}/>
-                                <GameDateFilter setDate={setFinalDate} initial={false} final/>
+                                <GameDateFilter value={initialDate} setDate={setInitialDate} initial final={false}/>
+                                <GameDateFilter value={finalDate} setDate={setFinalDate} initial={false} final/>
                                 <div className="d-flex gap-2 justify-content-end">
                                     <button type="button" className="btn btn-outline-dark" onClick={handleSortToggle}>
                                         <i className={`fa fa-sort-amount-${sortMode}`}></i>

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
     const { register, handleSubmit, setError, reset, formState: { errors, isValid } } = useForm({ mode: 'all' });
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const handleUserRegister = async (user) => {
         try {
