@@ -22,6 +22,13 @@ function HomePage() {
         getGamesByGenre();
     }, [genre, platform, numPage, numElements]);
 
+    function restartFilters() {
+        setGenre('');
+        setPlatform('');
+        setNumPage(1);
+        setNumElements(18);
+    }
+
     function addOneToPage() {
         numPage === 5 ? setNumPage(5) : setNumPage((prev) => prev + 1);
     }
@@ -50,6 +57,9 @@ function HomePage() {
                                     <div className='text-center fs-2' style={{width: '25%'}}>
                                         <GameFilter value={platform} onChange={setPlatform} filterOptions={FilterData.parentPlatformOptions}/>
                                     </div>
+                                    <button type="button" className="btn btn-outline-dark rounded-pill" onClick={() => restartFilters()}>
+                                        <i className={`fa fa-times-circle`}></i>
+                                    </button>
                                 </div>
                                 <GameList game={gameGenre} home footer={false}/>
                                 <div className="d-flex gap-5 justify-content-center text-center fs-5">

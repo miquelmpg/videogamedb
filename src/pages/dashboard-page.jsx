@@ -40,6 +40,18 @@ function DashboardPage() {
         else setSortMode(SORT_MODE_ASC);
     }
 
+    function restartFilters() {
+        setGenre('');
+        setParentPlatform('');
+        setPlatform('');
+        setInitialDate('');
+        setFinalDate('');
+        setParameter('rating');
+        setSortMode(SORT_MODE_ASC);
+        setNumPage(1);
+        setNumElements(18);
+    }
+
         function addOneToPage() {
         numPage === 5 ? setNumPage(5) : setNumPage((prev) => prev + 1);
     }
@@ -69,8 +81,11 @@ function DashboardPage() {
                                 <GameDateFilter value={initialDate} setDate={setInitialDate} initial final={false}/>
                                 <GameDateFilter value={finalDate} setDate={setFinalDate} initial={false} final/>
                                 <div className="d-flex gap-2 justify-content-end">
-                                    <button type="button" className="btn btn-outline-dark" onClick={handleSortToggle}>
+                                    <button type="button" className="btn btn-outline-dark rounded-pill" onClick={handleSortToggle}>
                                         <i className={`fa fa-sort-amount-${sortMode}`}></i>
+                                    </button>
+                                    <button type="button" className="btn btn-outline-dark rounded-pill" onClick={() => restartFilters()}>
+                                        <i className={`fa fa-times-circle`}></i>
                                     </button>
                                 </div>
                             </div>
@@ -101,7 +116,7 @@ function DashboardPage() {
                                                 <div className='d-flex gap-5'>
                                                     <LineTimeChart data={data} parameter={parameter}/>
                                                     {dataPie && <div>  
-                                                                    <div>{data.find((game) => game.id === dataPie) ?.name}</div>
+                                                                    {/* <div>{data.find((game) => game.id === dataPie) ?.name}</div> */}
                                                                     <RatingsPieChart data={data.find((game) => game.id === dataPie)}></RatingsPieChart>
                                                                 </div>}
                                                 </div>

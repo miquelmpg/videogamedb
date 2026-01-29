@@ -6,9 +6,11 @@ import { Layout, Loading} from '../components/ui';
 
 function DetailPage() {
     const [game, setGame] = useState(null);
+    const [error, setError] = useState(null);
     const { id } = useParams();
     useEffect(() => {
-        async function getGame() {
+        try {
+            async function getGame() {
             const [data, trailer, post, screenshots] = await Promise.all([
                 RawgService.getVideoGameById(id),
                 RawgService.getTrailerById(id),
@@ -19,10 +21,14 @@ function DetailPage() {
             setGame({ ...data, trailer: trailer, screenshots: screenshots, post: post });
         }
         getGame();
+        } catch (error) {
+            setError(error);
+        }
+        
     }, []);
     return (
         <>
-            {Number.isNaN(+id) ? <Navigate to={'/404'}/> : ''}
+            {!error ? <Navigate to={'/404'}/> : ''}
             {!game && (
                 <Layout>
                     <Loading loading={game}/>
