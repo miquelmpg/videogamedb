@@ -9,13 +9,13 @@ import { AuthContextProvider } from './contexts';
 worker.start({ onUnhandledRequest: 'bypass'})
   .then(() => {
     createRoot(document.getElementById('root')).render(
-      <StrictMode>
+      // <StrictMode>
         <Router>
           <AuthContextProvider>
-            <App />
+            <App/>
           </AuthContextProvider>
-        </Router>
-      </StrictMode>,
+        </Router>,
+      {/* </StrictMode>, */}
     )
   })
   .catch((error) => console.log(error));

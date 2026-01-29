@@ -6,6 +6,8 @@ import * as FilterData from '../data/filter-option-data';
 import { Layout, Loading } from '../components/ui';
 import { useSearchParams } from "react-router-dom";
 
+const noData = './src/assets/images/noData.png'
+
 const SORT_MODE_ASC = 'asc';
 const SORT_MODE_DESC = 'desc';
 
@@ -13,14 +15,14 @@ function DashboardPage() {
     const [searchParams, setSearchParams] = useSearchParams({});
     const [data, setData] = useState();
     const [genre, setGenre] = useState(searchParams.get("genre") || "");
-    const [parentPlatform, setParentPlatform] = useState(searchParams.get("parent platform") || "");
+    const [parentPlatform, setParentPlatform] = useState(searchParams.get("parent_platform") || "");
     const [platform, setPlatform] = useState(searchParams.get("platform") || "");
-    const [initialDate, setInitialDate] = useState(searchParams.get("initial date") || "");
-    const [finalDate, setFinalDate] = useState(searchParams.get("final date") || "");
+    const [initialDate, setInitialDate] = useState(searchParams.get("initial_date") || "");
+    const [finalDate, setFinalDate] = useState(searchParams.get("final_date") || "");
     const [parameter, setParameter] = useState(searchParams.get("rating") || 'rating');
-    const [sortMode, setSortMode] = useState(searchParams.get("sort mode") || SORT_MODE_ASC);
-    const [numPage, setNumPage] = useState(searchParams.get("num page") || 1);
-    const [numElements, setNumElements] = useState(searchParams.get("num elements") || 18);
+    const [sortMode, setSortMode] = useState(searchParams.get("sort_mode") || SORT_MODE_ASC);
+    const [numPage, setNumPage] = useState(searchParams.get("num_page") || 1);
+    const [numElements, setNumElements] = useState(searchParams.get("num_elements") || 18);
     const [dataPie, setDataPie] = useState();
 
     useEffect(() => {
@@ -29,10 +31,9 @@ function DashboardPage() {
             const dataSorted = sortMode === SORT_MODE_ASC ? data.sort((a, b) => a[parameter] - b[parameter]) : data.toSorted((a, b) => b[parameter] - a[parameter]);
             setData(dataSorted);
         }
-        setSearchParams({ genre: genre, 'parent platform': parentPlatform, platform: platform, 'initial date': initialDate, 'final date': finalDate, rating: parameter, 'num page': numPage, 'num elements': numElements, 'sort mode': sortMode })
+        setSearchParams({ genre: genre, parent_platform: parentPlatform, platform: platform, initial_date: initialDate, final_date: finalDate, rating: parameter, num_page: numPage, num_elements: numElements, sort_mode: sortMode }, { replace: true })
         getDashboardData();
     }, [genre, parentPlatform, platform, initialDate, finalDate, numPage, numElements, sortMode]);
-
 
     const handleSortToggle = () => {
         if (sortMode === SORT_MODE_ASC) setSortMode(SORT_MODE_DESC);
@@ -106,7 +107,7 @@ function DashboardPage() {
                                                 </div>
                                             </>}
                         {data.length === 0 && <>
-                                                <img src='https://docs.toucantoco.com/_images/no_data.png'/>
+                                                <img src={noData}/>
                                             </>}
                     </>}
             </Layout>

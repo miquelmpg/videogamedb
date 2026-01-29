@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { GameDetail } from '../components/games';
 import * as RawgService from '../services/rawg-service';
 import { Layout, Loading} from '../components/ui';
 
 function DetailPage() {
     const [game, setGame] = useState(null);
-    console.log(game)
     const { id } = useParams();
-    console.log(id)
     useEffect(() => {
         async function getGame() {
-
             const [data, trailer, post, screenshots] = await Promise.all([
                 RawgService.getVideoGameById(id),
                 RawgService.getTrailerById(id),
@@ -25,6 +22,7 @@ function DetailPage() {
     }, []);
     return (
         <>
+            {Number.isNaN(+id) ? <Navigate to={'/404'}/> : ''}
             {!game && (
                 <Layout>
                     <Loading loading={game}/>

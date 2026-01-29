@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-
 function Search({ search, setSearch }) {
     const navigate = useNavigate();
     function goToSearch() {

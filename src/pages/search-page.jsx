@@ -13,7 +13,7 @@ function SearchPage() {
             const data = await RawgService.getVideoGamesBySearch(search);
             setFilteredGames(data);
         }
-        search ? setSearchParams({ search }) : setSearchParams({});
+        search ? setSearchParams({ search }, { replace: true }) : setSearchParams({});
         getSearch(search);
     }, [search]);
     
