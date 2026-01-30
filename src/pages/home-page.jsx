@@ -50,7 +50,7 @@ function HomePage() {
         <Layout>
             <Loading loading={gameGenre}/>
             {gameGenre && <>
-                                <div className="d-flex justify-content-center gap-5">
+                                <div className="d-flex justify-content-center gap-5 mt-3 mb-3">
                                     <div className='text-center fs-2' style={{width: '25%'}}>
                                         <GameFilter value={genre} onChange={setGenre} filterOptions={FilterData.genreOptions}/>
                                     </div>
@@ -62,7 +62,7 @@ function HomePage() {
                                     </button>
                                 </div>
                                 <GameList game={gameGenre} home footer={false}/>
-                                <div className="d-flex gap-5 justify-content-center text-center fs-5">
+                                <div className="d-flex gap-5 justify-content-center text-center fs-5 mt-3 mb-3">
                                     <div>
                                         <div>Current Page:</div>
                                             <div className="d-flex gap-2">

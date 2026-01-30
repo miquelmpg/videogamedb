@@ -13,44 +13,28 @@ http.interceptors.response.use(
 );
 
 export const getVideoGameById = async (gameId) => {
-    try {
-        const game = await http.get(`/games/${gameId}`);
-        return game;
-    } catch (error) {
-        console.log('An error has occurred obtaining video game data', error);
-    }
+    const game = await http.get(`/games/${gameId}`);
+    return game;
 }
 
 export const getTrailerById = async (gameId) => {
-    try {
-        const trailer = await http.get(`/games/${gameId}/movies`);
-        return trailer;
-    } catch (error) {
-        console.log('An error has occurred obtaining video game data', error);
-    }
+    const trailer = await http.get(`/games/${gameId}/movies`);
+    return trailer;
 }
 
 export const getScreenshotsById = async (gameId) => {
-    try {
-        const screenshots = await http.get(`/games/${gameId}/screenshots`);
-        return screenshots;
-    } catch (error) {
-        console.log('An error has occurred obtaining video game data', error);
-    }
+    const screenshots = await http.get(`/games/${gameId}/screenshots`);
+    return screenshots;
 }
 
 export const getPostById = async (gameId) => {
-    try {
-        const post = await http.get(`/games/${gameId}/reddit`);
-        return post;
-    } catch (error) {
-        console.log('An error has occurred obtaining video game data', error);
-    }
+    const post = await http.get(`/games/${gameId}/reddit`);
+    return post;
 }
 
 export const getVideoGamesByGenre = async (genre, platform, page, elements) => {
     try {
-        const gameGenre = await http.get(`/games?${genre}${platform}&page=${page}&page_size=${elements}`);
+        const gameGenre = await http.get(`/games?${genre && `genres=${genre}`}${platform && `&parent_platforms=${platform}`}&page=${page}&page_size=${elements}`);
         return gameGenre.results;
     } catch (error) {
         console.log('An error has occurred obtaining video game data', error);
@@ -68,7 +52,7 @@ export const getVideoGamesBySearch = async (search) => {
 
 export const getDashboardData = async (genre, parentPlatform, platform, initialDate, finalDate, page, elements) => {
     try {
-        const gameGenre = await http.get(`/games?${genre}${parentPlatform}${platform}${initialDate && `&dates=${initialDate}`}${finalDate && `,${finalDate}`}&page=${page}&page_size=${elements}`);
+        const gameGenre = await http.get(`/games?${genre && `genres=${genre}`}${parentPlatform && `&parent_platforms=${parentPlatform}`}${platform && `&platforms=${platform}`}${initialDate && `&dates=${initialDate}`}${finalDate && `,${finalDate}`}&page=${page}&page_size=${elements}`);
         return gameGenre.results;
     } catch (error) {
         console.log('An error has occurred obtaining video game data', error);

@@ -50,9 +50,10 @@ function DashboardPage() {
         setSortMode(SORT_MODE_ASC);
         setNumPage(1);
         setNumElements(18);
+        setDataPie();
     }
 
-        function addOneToPage() {
+    function addOneToPage() {
         numPage === 5 ? setNumPage(5) : setNumPage((prev) => prev + 1);
     }
 
@@ -71,7 +72,7 @@ function DashboardPage() {
     return (
         <> <Layout>
             <Loading loading={data}/>
-            {data && <> 
+            {data && <div className='mt-3 mb-3'> 
                         <div className='d-flex flex-column gap-3'>
                             <div className='d-flex text-center mx-auto gap-3' style={{width: '100%'}}>
                                 <GameFilter value={genre} onChange={setGenre} filterOptions={FilterData.genreOptions}/>
@@ -116,15 +117,15 @@ function DashboardPage() {
                                                 <div className='d-flex gap-5'>
                                                     <LineTimeChart data={data} parameter={parameter}/>
                                                     {dataPie && <div>  
-                                                                    {/* <div>{data.find((game) => game.id === dataPie) ?.name}</div> */}
+                                                                    <div className='text-center fw-bold' style={{color: '#8884d8'}}>{data.find((game) => game.id === dataPie) ?.name}</div>
                                                                     <RatingsPieChart data={data.find((game) => game.id === dataPie)}></RatingsPieChart>
                                                                 </div>}
                                                 </div>
                                             </>}
                         {data.length === 0 && <>
-                                                <img src={noData}/>
+                                                <img src={noData} />
                                             </>}
-                    </>}
+                    </div>}
             </Layout>
         </>
     );

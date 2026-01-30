@@ -21,7 +21,9 @@ function SearchPage() {
         <>
         <Layout>
             <Loading loading={filteredGames}/>
-            <GameList game={filteredGames} home/>
+            <div className="mt-3 mb-3">
+                <GameList game={filteredGames} home/>
+            </div>
         </Layout>
         </>
     );
