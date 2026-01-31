@@ -2,7 +2,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { useNavigate } from 'react-router-dom';
 import useRecentActivity from '../../../hooks/use-recent-activity';
 
-function RatingBarChart({ data, parameter, setDataPie }) {
+function RatingBarChart({ data, parameter, setDataPie, setDataPriceName }) {
     const navigate = useNavigate();
     const { storeGameRecentActivity } = useRecentActivity();
 
@@ -21,7 +21,11 @@ function RatingBarChart({ data, parameter, setDataPie }) {
                     onClick={(data) => {{
                         navigate(`/games/${data.payload.id}`);
                         storeGameRecentActivity(data.payload.id);}}}
-                    onMouseEnter={(data) => setDataPie(data.payload.id)}/>
+                    onMouseEnter={(data) => {
+                        setDataPie(data.payload.id);
+                        setDataPriceName(data.payload.name);
+                    }
+                    } />
             </BarChart>
         </ResponsiveContainer>
     );

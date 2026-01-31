@@ -2,11 +2,10 @@ import { useState } from "react";
 import { useDraggable } from "@dnd-kit/core";
 
 function DraggableContainer({ id, children }) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x:  window.innerWidth - 350, y: window.innerHeight - (window.innerHeight- 82.5)});
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
 
-  // Calculamos la posición en tiempo real
   const x = (transform?.x ?? 0) + position.x;
   const y = (transform?.y ?? 0) + position.y;
 
@@ -15,11 +14,9 @@ function DraggableContainer({ id, children }) {
     position: "absolute",
     cursor: "grab",
     touchAction: "none",
-    overflowY: 'hidden',
     transform: `translate(${x}px, ${y}px)`,
   };
 
-  // Al soltar, acumulamos la posición
   const handlePointerUp = () => {
     if (transform) {
       setPosition((prev) => ({
@@ -35,7 +32,7 @@ function DraggableContainer({ id, children }) {
       style={style}
       {...listeners}
       {...attributes}
-      onPointerUp={handlePointerUp} // cuando sueltas el mouse o dedo
+      onPointerUp={handlePointerUp}
     >
       {children}
     </div>

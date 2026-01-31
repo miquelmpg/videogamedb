@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BarChart, LineTimeChart, KPI, RatingsPieChart } from '../components/charts';
 import { GameFilter, GameDateFilter } from '../components/games';
 import * as RawgService from '../services/rawg-service';
+import * as CheapSharkService from '../services/cheap-shark-service';
 import * as FilterData from '../data/filter-option-data';
 import { Layout, Loading } from '../components/ui';
 import { useSearchParams } from "react-router-dom";
@@ -21,23 +22,30 @@ function DashboardPage() {
     const [finalDate, setFinalDate] = useState(searchParams.get("final_date") || "");
     const [parameter, setParameter] = useState(searchParams.get("rating") || 'rating');
     const [sortMode, setSortMode] = useState(searchParams.get("sort_mode") || SORT_MODE_ASC);
-    const [numPage, setNumPage] = useState(searchParams.get("num_page") || 1);
-    const [numElements, setNumElements] = useState(searchParams.get("num_elements") || 18);
-    const [dataPie, setDataPie] = useState();
+    const [numPage, setNumPage] = useState(Number(searchParams.get("num_page") || 1));
+    const [numElements, setNumElements] = useState(Number(searchParams.get("num_elements") || 18));
+    const [dataPie, setDataPie] = useState(Number(searchParams.get("data_pie")) || "");
+    const [dataPriceName, setDataPriceName] = useState(searchParams.get("price_name") || "");
+    const [dataPrice, setDataPrice] = useState('');
 
     useEffect(() => {
         async function getDashboardData() {
-            const data = await RawgService.getDashboardData(genre, parentPlatform, platform, initialDate, finalDate, numPage, numElements);
+
+            const [data, dataPrice] = await Promise.all([
+                RawgService.getDashboardData(genre, parentPlatform, platform, initialDate, finalDate, numPage, numElements),
+                CheapSharkService.getVideoGamesPriceByTitle(dataPriceName)
+            ]);
             const dataSorted = sortMode === SORT_MODE_ASC ? data.sort((a, b) => a[parameter] - b[parameter]) : data.toSorted((a, b) => b[parameter] - a[parameter]);
             setData(dataSorted);
+            setDataPrice(dataPrice);
+
         }
-        setSearchParams({ genre: genre, parent_platform: parentPlatform, platform: platform, initial_date: initialDate, final_date: finalDate, rating: parameter, num_page: numPage, num_elements: numElements, sort_mode: sortMode }, { replace: true })
+        setSearchParams({ genre: genre, parent_platform: parentPlatform, platform: platform, initial_date: initialDate, final_date: finalDate, rating: parameter, num_page: numPage, num_elements: numElements, sort_mode: sortMode, data_pie: dataPie, price_name: dataPriceName }, { replace: true })
         getDashboardData();
-    }, [genre, parentPlatform, platform, initialDate, finalDate, numPage, numElements, sortMode]);
+    }, [genre, parentPlatform, platform, initialDate, finalDate, numPage, numElements, sortMode, parameter, dataPie, dataPriceName]);
 
     const handleSortToggle = () => {
-        if (sortMode === SORT_MODE_ASC) setSortMode(SORT_MODE_DESC);
-        else setSortMode(SORT_MODE_ASC);
+        sortMode === SORT_MODE_ASC ? setSortMode(SORT_MODE_DESC) : setSortMode(SORT_MODE_ASC);
     }
 
     function restartFilters() {
@@ -50,7 +58,8 @@ function DashboardPage() {
         setSortMode(SORT_MODE_ASC);
         setNumPage(1);
         setNumElements(18);
-        setDataPie();
+        setDataPie("");
+        setDataPriceName('');
     }
 
     function addOneToPage() {
@@ -72,7 +81,7 @@ function DashboardPage() {
     return (
         <> <Layout>
             <Loading loading={data}/>
-            {data && <div className='mt-3 mb-3'> 
+            {data && <div className='mt-3 mb-3 text-center'> 
                         <div className='d-flex flex-column gap-3'>
                             <div className='d-flex text-center mx-auto gap-3' style={{width: '100%'}}>
                                 <GameFilter value={genre} onChange={setGenre} filterOptions={FilterData.genreOptions}/>
@@ -109,21 +118,30 @@ function DashboardPage() {
                                 </div>
                             </div>
                         </div>
-                        {data.length > 0 && <>
+                        {data.length > 0 && <div className='d-flex flex-column gap-3 mt-3'>
                                                 <div className='d-flex'>
                                                     <KPI data={data} parameter={parameter}/>
-                                                    <BarChart data={data} setDataPie={setDataPie} parameter={parameter}/>
+                                                    <div style={{width: '100%'}}>
+                                                        <div className='text-center fw-bold' style={{color: '#8884d8'}}>{data.find((game) => game.id === dataPie) ?.name}</div>
+                                                        <BarChart data={data} setDataPie={setDataPie} parameter={parameter} setDataPriceName={setDataPriceName}/>
+                                                    </div>
+                                                    
                                                 </div>
                                                 <div className='d-flex gap-5'>
-                                                    <LineTimeChart data={data} parameter={parameter}/>
+                                                    {dataPrice.length === 0 && <>
+                                                                                    <img src={noData} style={{width: '100%', height: '300px'}} />
+                                                                                </>}
+                                                    {dataPrice.length > 0 && dataPriceName && <LineTimeChart data={null} dataPrice={dataPrice} parameter={null} time={false} price/>}
                                                     {dataPie && <div>  
-                                                                    <div className='text-center fw-bold' style={{color: '#8884d8'}}>{data.find((game) => game.id === dataPie) ?.name}</div>
+                                                                    {/* <div className='text-center fw-bold' style={{color: '#8884d8'}}>{data.find((game) => game.id === dataPie) ?.name} Ratings percentage</div> */}
+                                                                    <div className='text-center fw-bold' style={{color: '#8884d8'}}>Ratings percentage</div>
                                                                     <RatingsPieChart data={data.find((game) => game.id === dataPie)}></RatingsPieChart>
                                                                 </div>}
                                                 </div>
-                                            </>}
+                                                <LineTimeChart data={data} dataPrice={null} parameter={parameter} time price={false}/>
+                                            </div>}
                         {data.length === 0 && <>
-                                                <img src={noData} />
+                                                <img src={noData} style={{width: '75vw'}} />
                                             </>}
                     </div>}
             </Layout>

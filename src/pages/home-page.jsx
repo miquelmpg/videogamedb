@@ -10,8 +10,8 @@ function HomePage() {
     const [gameGenre, SetGameGenre] = useState(null);
     const [genre, setGenre] = useState(searchParams.get("genre") || "");
     const [platform, setPlatform] = useState(searchParams.get("parent_platform") || "");
-    const [numPage, setNumPage] = useState(searchParams.get("num_page") || 1);
-    const [numElements, setNumElements] = useState(searchParams.get("num_elements") || 18);
+    const [numPage, setNumPage] = useState(Number(searchParams.get("num_page") || 1));
+    const [numElements, setNumElements] = useState(Number(searchParams.get("num_elements") || 18));
     
     useEffect(() => {
         async function getGamesByGenre() {
@@ -66,7 +66,7 @@ function HomePage() {
                                     <div>
                                         <div>Current Page:</div>
                                             <div className="d-flex gap-2">
-                                            <div className={`fa fa-arrow-left btn btn-outline-dark btn-sm rounded-pill align-self-center ${numPage === 1 ? 'disabled' : ""}`} style={{ width: '50px', height: 'auto'}} role="button" onClick={() => subtractOneTpoPage()}></div>
+                                            <div className={`fa fa-arrow-left btn btn-outline-dark btn-sm rounded-pill align-self-center ${numPage === 1 ? 'disabled' : ""}`} disabled={numPage === 1} style={{ width: '50px', height: 'auto'}} role="button" onClick={() => subtractOneTpoPage()}></div>
                                             {numPage}
                                             <div className={`fa fa-arrow-right btn btn-outline-dark btn-sm rounded-pill align-self-center ${numPage === 5 ? 'disabled' : ""}`} style={{ width: '50px', height: 'auto'}} role="button" onClick={() => addOneToPage((prev) => prev + 1)}></div>
                                         </div>
@@ -74,7 +74,7 @@ function HomePage() {
                                     <div>
                                         <div>Number Games:</div>
                                         <div className="d-flex gap-2">
-                                            <div className={`fa fa-minus btn btn-outline-dark btn-sm rounded-pill align-self-center ${numElements === 1 ? 'disabled' : ""}`} style={{ width: '50px', height: 'auto'}} role="button" onClick={() => subtractOneToElementSize()}></div>
+                                            <div className={`fa fa-minus btn btn-outline-dark btn-sm rounded-pill align-self-center ${numElements === 1 ? 'disabled' : ""}`} disabled={numElements === 1} style={{ width: '50px', height: 'auto'}} role="button" onClick={() => subtractOneToElementSize()}></div>
                                             {numElements}
                                             <div className={`fa fa-plus btn btn-outline-dark btn-sm rounded-pill align-self-center ${numElements === 24 ? 'disabled' : ""}`} style={{ width: '50px', height: 'auto'}} role="button" onClick={() => addOneToElementSize()}></div>
                                         </div>
