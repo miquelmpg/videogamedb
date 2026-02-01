@@ -10,7 +10,7 @@ function Search({ search, setSearch }) {
             <div className="mx-auto" style={{width: '100%'}}>
                 <div className="d-flex" role="search">
                     <input 
-                        className="form-control me-2 rounded-pill"
+                        className="form-control me-4 rounded-pill"
                         type="search" 
                         placeholder="Search" 
                         value={search} 
