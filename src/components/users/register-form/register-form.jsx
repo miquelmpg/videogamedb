@@ -9,7 +9,6 @@ function RegisterForm() {
     const handleUserRegister = async (user) => {
         try {
             user = await AuthService.register(user);
-            console.log(user);
             reset();
             navigate('/login');
         } catch (error) {

@@ -11,7 +11,6 @@ function LoginForm() {
     const handleUserLogin = async (user) => {
         try {
             user = await AuthService.login(user);
-            console.log(user);
             reset();
             login(user);
             navigate('/');

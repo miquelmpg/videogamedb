@@ -30,7 +30,7 @@ function App() {
                     </Routes>
                 </main>  
                 </SearchProviderWrapper>
-              {/* <Footer/> */}
+              <Footer/>
             </FooterProviderWrapper>
           </Favorites>
         </FavoriteProviderWrapper>

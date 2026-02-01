@@ -1,0 +1,14 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  VITE_RAWG_BASE_API_URL='https://api.rawg.io/api'
+  VITE_AUTH_BASE_API_URL='https://rawg-auth.com'
+  VITE_REDDIT_BASE_API_URL='https://www.reddit.com'
+  VITE_CHEAPSHARK_BASE_API_URL='https://www.cheapshark.com'
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

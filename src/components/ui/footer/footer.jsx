@@ -11,7 +11,6 @@ function Footer() {
     const [recentActivityGames, setRecentActivityGames] = useState();
     const { toggle, setNumImage, addOneToImageNumber, subtractOneToImageNumber } = useContext(FooterContext);
     const location = useLocation();
-    console.log(recentActivityGames)
     
     useEffect(() => {
         async function arrayRecentGames() {

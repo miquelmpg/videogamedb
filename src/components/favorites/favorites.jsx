@@ -48,18 +48,19 @@ function Favorites({ children }) {
                                 {favoriteToggle && <DraggableContainer id={'container-draggable'}>
                                                         <DroppableContainer id="drop-zone">
                                                             <div className='d-flex justify-content-center flex-wrap gap-2'>
-                                                            {favoriteGames.map((game) => (
-                                                                                <img
-                                                                                key={game.id}
-                                                                                data-bs-toggle="tooltip"
-                                                                                title={game.name}
-                                                                                src={game.background_image}
-                                                                                style={{ width: '120px', height: '90px'}}
-                                                                                onDoubleClick={() => deleteFavoriteGame(game.id)}
-                                                                                onClick={() => goToDetail(game.id)}
-                                                                                alt={game.name}
-                                                                                />
-                                                            ))}
+                                                                {favoriteGames.length === 0 && <div className='fw-semibold fs-5'>Drag & drop your favs here!</div>}
+                                                                {favoriteGames.map((game) => (
+                                                                                    <img
+                                                                                    key={game.id}
+                                                                                    data-bs-toggle="tooltip"
+                                                                                    title={game.name}
+                                                                                    src={game.background_image}
+                                                                                    style={{ width: '120px', height: '90px'}}
+                                                                                    onDoubleClick={() => deleteFavoriteGame(game.id)}
+                                                                                    onClick={() => goToDetail(game.id)}
+                                                                                    alt={game.name}
+                                                                                    />
+                                                                ))}
                                                             </div>  
                                                         </DroppableContainer>
                                                     </DraggableContainer>}

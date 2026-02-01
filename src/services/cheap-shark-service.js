@@ -25,5 +25,3 @@ export const getVideoGamesStore = async (cheapestDealID) => {
         console.log('An error has occurred obtaining cheapest shark data', error);
     }
 }
-
-// https://www.cheapshark.com/redirect?dealID=mT6q0vLctHtDCY6Nx7lM7tM8Rc0O%2BLfpwO99IPW4oV0%3D

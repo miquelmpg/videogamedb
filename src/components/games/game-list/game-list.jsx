@@ -7,7 +7,7 @@ function GameList({ game, home, footer }) {
 
     return (
         <>
-            {home && <div className="row row-cols-6 gap-3 justify-content-start">
+            {home && <div className="row row-cols-6 gap-3 justify-content-center">
                         {game && (game.map((game) => <GameItem key={game.id} {...game} home footer={false}/>))}
                     </div>}
 

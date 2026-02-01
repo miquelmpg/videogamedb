@@ -4,8 +4,8 @@ function Loading({ loading }) {
     return (
         <>
             {!loading && <div>
-                                            <img src={loadingIcon} alt="Loading..."/>
-                                        </div>}
+                            <img src={loadingIcon} alt="Loading..."/>
+                        </div>}
         </>
 
     );

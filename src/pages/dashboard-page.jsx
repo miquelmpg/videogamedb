@@ -128,9 +128,9 @@ function DashboardPage() {
                                                     
                                                 </div>
                                                 <div className='d-flex gap-5'>
-                                                    {dataPrice.length === 0 && <>
+                                                    {/* {dataPrice.length === 0 && <>
                                                                                     <img src={noData} style={{width: '100%', height: '300px'}} />
-                                                                                </>}
+                                                                                </>} */}
                                                     {dataPrice.length > 0 && dataPriceName && <LineTimeChart data={null} dataPrice={dataPrice} parameter={null} time={false} price/>}
                                                     {dataPie && <div>  
                                                                     {/* <div className='text-center fw-bold' style={{color: '#8884d8'}}>{data.find((game) => game.id === dataPie) ?.name} Ratings percentage</div> */}

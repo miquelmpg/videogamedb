@@ -32,7 +32,7 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
         <>
             <Jumbotron backgroundImage={background_image}>
                 <Layout>
-                    <div className='d-flex flex-column gap-5 text-white mx-auto container mt-3 mb-3'>
+                    <div className='d-flex flex-column gap-5 text-white mx-auto container mt-5 mb-5'>
                         <div className="d-flex gap-3">
                             <div>
                                 <div className="fw-bold" style={{fontSize: '50px'}}>{name}</div>

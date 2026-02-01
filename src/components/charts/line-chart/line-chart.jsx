@@ -11,7 +11,7 @@ function LineTimeChart({ data, dataPrice, parameter, time, price }) {
     return (
         <>
             {time &&    <div style={{width: '100%'}}>
-                        <div className='text-center fw-bold' style={{color: '#8884d8'}}>Games by Release Date</div>
+                        <div className='text-center fw-bold' style={{color: '#8884d8'}}>Games by release date</div>
                         <ResponsiveContainer width="100%" height={300}>
                         <LineChart
                         style={{ aspectRatio: 1.618 }}
