@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import '/src/components/ui/search/search.css'
 
 function Search({ search, setSearch }) {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ function Search({ search, setSearch }) {
             <div className="mx-auto" style={{width: '100%'}}>
                 <div className="d-flex" role="search">
                     <input 
-                        className="form-control me-4 rounded-pill"
+                        className="form-control me-4 rounded-pill search"
                         type="search" 
                         placeholder="Search" 
                         value={search} 

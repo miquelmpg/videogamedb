@@ -1,0 +1,22 @@
+.game-item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 250px;
+}
+
+.game {
+    transition: margin 0.5s ease;
+}
+
+.game:hover {
+    margin: -20px;
+    transition: margin 0.5s ease;
+}
+
+@media (max-width: 575.98px) {
+    .game-item {
+        height: 150px;
+    }
+}

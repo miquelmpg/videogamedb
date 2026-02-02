@@ -4,6 +4,7 @@ import { FavoriteContext } from "../../../contexts/favorite-context";
 import { DraggableItem } from "../../dnd";
 import * as ScoreUtils from '../../../utils/score-utils';
 import useRecentActivity from "../../../hooks/use-recent-activity";
+import '../game-item/game-item.css';
 
 function GameItem({ id, name, background_image, rating, home, footer }) {
     const { favoriteToggle } = useContext(FavoriteContext);
@@ -15,9 +16,9 @@ function GameItem({ id, name, background_image, rating, home, footer }) {
     }
 
     const gameContent = (
-        <div className="row d-flex flex-column" style={{position: 'relative'}}>
-            <div className="rounded-top-4 d-flex flex-column justify-content-end" 
-                style={{backgroundImage: `URL(${background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', width: '300px', height: '250px'}}>
+        <div className="row d-flex flex-column game" style={{position: 'relative'}}>
+            <div className="rounded-top-4 d-flex flex-column justify-content-end game-item" 
+                style={{backgroundImage: `URL(${background_image})`}}>
             </div>
             <div className="text-center rounded-bottom-4 align-content-center" style={{backgroundColor: '#202020', width: '300px', height: '125px'}}>
                     <Link className="text-decoration-none text-white fs-4 fw-bold" onClick={() => storeGameRecentActivity(id)}

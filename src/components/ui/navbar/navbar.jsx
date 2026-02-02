@@ -32,7 +32,6 @@ function Navbar() {
                     <span className="navbar-toggler-icon btn btn-light"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
-                    
                     <ul className="me-auto mb-2 mb-lg-0" style={{width: '100%', listStyle: 'none'}}>
                         <li>
                             <Search search={search} setSearch={setSearch}/>

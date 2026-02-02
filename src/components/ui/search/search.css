@@ -1,0 +1,18 @@
+.search {
+    background-color: #ffffff3a;
+    transition: background-color 0.5s ease;
+}
+
+.search:hover {
+    background-color: white;
+    transition: background-color 0.5s ease;
+}
+
+.search:hover::placeholder {
+    color:#202020;
+    transition: color 0.3s ease;
+}
+
+.search::placeholder {
+    color: white;
+}

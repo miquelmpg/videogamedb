@@ -51,13 +51,13 @@ function Favorites({ children }) {
                                                                 {favoriteGames.length === 0 && <div className='fw-semibold fs-5'>Drag & drop your favs here!</div>}
                                                                 {favoriteGames.map((game) => (
                                                                                     <img
+                                                                                    className='rounded-3'
                                                                                     key={game.id}
                                                                                     data-bs-toggle="tooltip"
                                                                                     title={game.name}
                                                                                     src={game.background_image}
                                                                                     style={{ width: '120px', height: '90px'}}
                                                                                     onDoubleClick={() => deleteFavoriteGame(game.id)}
-                                                                                    onClick={() => goToDetail(game.id)}
                                                                                     alt={game.name}
                                                                                     />
                                                                 ))}
