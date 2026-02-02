@@ -6,7 +6,7 @@
 
 All pages are **shareable via URL using query parameters**, so filtered searches, pagination, or dashboard views can be directly shared.
 
-🔗 **Project:** https://game-data-base.netlify.app/
+[Visit Game Website](https://game-data-base.netlify.app/)
 
 ---
 
