@@ -6,8 +6,7 @@ import * as CheapSharkService from '../services/cheap-shark-service';
 import * as FilterData from '../data/filter-option-data';
 import { Layout, Loading } from '../components/ui';
 import { useSearchParams } from "react-router-dom";
-
-const noData = '../src/assets/images/noData.png'
+import noData from './src/assets/images/noData.png';
 
 const SORT_MODE_ASC = 'asc';
 const SORT_MODE_DESC = 'desc';
@@ -27,6 +26,7 @@ function DashboardPage() {
     const [dataPie, setDataPie] = useState(Number(searchParams.get("data_pie")) || "");
     const [dataPriceName, setDataPriceName] = useState(searchParams.get("price_name") || "");
     const [dataPrice, setDataPrice] = useState('');
+    console.log(dataPrice)
 
     useEffect(() => {
         async function getDashboardData() {
