@@ -1,6 +1,7 @@
 .search {
     background-color: #ffffff3a;
     transition: background-color 0.5s ease;
+    color: white;
 }
 
 .search:hover {

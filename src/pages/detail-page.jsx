@@ -27,7 +27,7 @@ function DetailPage() {
     };
 
     getGame();
-    }, []);
+    }, [id]);
 
     return (
         <>

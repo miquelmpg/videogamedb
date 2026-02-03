@@ -48,7 +48,7 @@ function Favorites({ children }) {
                                 {favoriteToggle && <DraggableContainer id={'container-draggable'}>
                                                         <DroppableContainer id="drop-zone">
                                                             <div className='d-flex justify-content-center flex-wrap gap-2'>
-                                                                {favoriteGames.length === 0 && <div className='fw-semibold fs-5'>Drag & drop your favs here!</div>}
+                                                                {favoriteGames.length === 0 && <div className='fw-semibold fs-5'>Drag & drop your 🖤 here!</div>}
                                                                 {favoriteGames.map((game) => (
                                                                                     <img
                                                                                     className='rounded-3'
