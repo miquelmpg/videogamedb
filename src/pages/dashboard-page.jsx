@@ -6,7 +6,7 @@ import * as CheapSharkService from '../services/cheap-shark-service';
 import * as FilterData from '../data/filter-option-data';
 import { Layout, Loading } from '../components/ui';
 import { useSearchParams } from "react-router-dom";
-import noData from './src/assets/images/noData.png';
+import noData from './../assets/images/noData.png';
 
 const SORT_MODE_ASC = 'asc';
 const SORT_MODE_DESC = 'desc';
