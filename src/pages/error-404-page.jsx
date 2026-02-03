@@ -1,4 +1,4 @@
-const error404 = './src/assets/images/error404.gif'
+const error404 = '../src/assets/images/error404.gif'
 
 function Error404Page() {
     return (

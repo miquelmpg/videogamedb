@@ -7,7 +7,7 @@ import * as FilterData from '../data/filter-option-data';
 import { Layout, Loading } from '../components/ui';
 import { useSearchParams } from "react-router-dom";
 
-const noData = './src/assets/images/noData.png'
+const noData = '../src/assets/images/noData.png'
 
 const SORT_MODE_ASC = 'asc';
 const SORT_MODE_DESC = 'desc';
