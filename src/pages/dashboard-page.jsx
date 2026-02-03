@@ -26,7 +26,6 @@ function DashboardPage() {
     const [dataPie, setDataPie] = useState(Number(searchParams.get("data_pie")) || "");
     const [dataPriceName, setDataPriceName] = useState(searchParams.get("price_name") || "");
     const [dataPrice, setDataPrice] = useState('');
-    console.log(dataPrice)
 
     useEffect(() => {
         async function getDashboardData() {
