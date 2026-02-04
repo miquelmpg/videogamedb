@@ -3,7 +3,7 @@ function GameDateFilter({ value, setDate, initial, final }) {
         <>
             {initial && <div>
                             <input
-                                className="form-select rounded-pill"
+                                className="form-select rounded-pill mx-auto"
                                 style={{width: '150px'}}
                                 type="text"
                                 name="date"
@@ -14,7 +14,7 @@ function GameDateFilter({ value, setDate, initial, final }) {
                         </div>}
             {final && <div>
                             <input
-                                className="form-select rounded-pill"
+                                className="form-select rounded-pill mx-auto"
                                 style={{width: '150px'}}
                                 type="text"
                                 name="date"

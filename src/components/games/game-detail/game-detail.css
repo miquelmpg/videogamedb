@@ -1,0 +1,24 @@
+.responsive-img {
+    width: 500px;
+    height: 300px;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+        .responsive-img  {
+        width: 300px;
+        height: 175px;
+        }
+
+        .center {
+            justify-content: center;
+        }
+}
+
+@media (max-width: 576px) {
+
+    .responsive-img  {
+        width: 300px;
+        height: 175px;
+    }
+}

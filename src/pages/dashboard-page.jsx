@@ -82,14 +82,14 @@ function DashboardPage() {
             <Loading loading={data}/>
             {data && <div className='mt-3 mb-3 text-center'> 
                         <div className='d-flex flex-column gap-3'>
-                            <div className='d-flex text-center mx-auto gap-3' style={{width: '100%'}}>
+                            <div className='d-block d-lg-flex text-center mx-auto gap-3' style={{width: '100%'}}>
                                 <GameFilter value={genre} onChange={setGenre} filterOptions={FilterData.genreOptions}/>
                                 <GameFilter value={parentPlatform} onChange={setParentPlatform} filterOptions={FilterData.parentPlatformOptions}/>
                                 <GameFilter value={platform} onChange={setPlatform} filterOptions={FilterData.platformOptions}/>
                                 <GameFilter value={parameter} onChange={setParameter} filterOptions={FilterData.parameterOptions}/>
                                 <GameDateFilter value={initialDate} setDate={setInitialDate} initial final={false}/>
                                 <GameDateFilter value={finalDate} setDate={setFinalDate} initial={false} final/>
-                                <div className="d-flex gap-2 justify-content-end">
+                                <div className="d-flex gap-2 justify-content-center">
                                     <button type="button" className="btn btn-outline-dark rounded-pill" onClick={handleSortToggle}>
                                         <i className={`fa fa-sort-amount-${sortMode}`}></i>
                                     </button>
@@ -118,21 +118,19 @@ function DashboardPage() {
                             </div>
                         </div>
                         {data.length > 0 && <div className='d-flex flex-column gap-3 mt-3'>
-                                                <div className='d-flex'>
+                                                <div className='d-block d-lg-flex'>
                                                     <KPI data={data} parameter={parameter}/>
                                                     <div style={{width: '100%'}}>
                                                         <div className='text-center fw-bold' style={{color: '#8884d8'}}>{data.find((game) => game.id === dataPie) ?.name}</div>
                                                         <BarChart data={data} setDataPie={setDataPie} parameter={parameter} setDataPriceName={setDataPriceName}/>
                                                     </div>
-                                                    
                                                 </div>
-                                                <div className='d-flex gap-5'>
+                                                <div className='d-block d-lg-flex gap-5'>
                                                     {dataPriceName && dataPrice.length === 0 && <>
                                                                                     <img src={noData} style={{width: '100%', height: '300px'}} />
                                                                                 </>}
                                                     {dataPrice.length > 0 && dataPriceName && <LineTimeChart data={null} dataPrice={dataPrice} parameter={null} time={false} price/>}
                                                     {dataPie && <div>  
-                                                                    {/* <div className='text-center fw-bold' style={{color: '#8884d8'}}>{data.find((game) => game.id === dataPie) ?.name} Ratings percentage</div> */}
                                                                     <div className='text-center fw-bold' style={{color: '#8884d8'}}>Ratings percentage</div>
                                                                     <RatingsPieChart data={data.find((game) => game.id === dataPie)}></RatingsPieChart>
                                                                 </div>}

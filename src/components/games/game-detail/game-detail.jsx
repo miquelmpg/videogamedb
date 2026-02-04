@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Jumbotron, Layout } from "../../ui";
 import { PostList } from "../../posts";
 import * as ScoreUtils from '../../../utils/score-utils';
 import * as DateUtils from '../../../utils/date-utils';
+import './game-detail.css';
 
 function GameDetail({ background_image, released, playtime, rating, parent_platforms, name, description_raw, genres, screenshots, trailer, background_image_additional, publishers, website, post}) {
     const [numberIndexScreenshot, setNumberIndexScreenshot] = useState(0);
@@ -51,22 +52,22 @@ function GameDetail({ background_image, released, playtime, rating, parent_platf
                                     <div className='btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center fw-bold' onClick={readMoreToggle}>{!readMore ? 'Read More' : 'Read Less'}</div>
                                 </div>
                             </div>
-                            <div className="d-flex flex-column gap-5">
+                            <div className="d-flex flex-column gap-5 center">
                                 {trailer.results.length !== 0 && (
-                                    <div className="d-flex align-items-center">
+                                    <div className="d-flex align-items-center justify-content-center">
                                         <div className="fa fa-angle-left btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center" style={{ width: '35px', height: 'auto'}} onClick={goAheadIndexTrailer}></div>
-                                            <video key={numberIndexTrailer} width="500" height={'300px'} controls autoPlay muted>
+                                            <video className="responsive-img" key={numberIndexTrailer} controls autoPlay muted>
                                                 <source src={`${trailer.results[numberIndexTrailer].data[480]}`} type="video/mp4"/>
                                             </video>
                                         <div className="fa fa-angle-right btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center" style={{ width: '35px', height: 'auto'}} onClick={goBackIndexTrailer}></div>
                                     </div>)}
                                 {trailer.results.length === 0 && (
                                     <div className="d-flex justify-content-center align-items-center">
-                                        <img  src={background_image_additional} style={{width: '500px', height: '300px'}}></img>
+                                        <img className="responsive-img" src={background_image_additional}></img>
                                     </div>)}
-                                <div className="d-flex align-items-center">
+                                <div className="d-flex align-items-center justify-content-center">
                                     <div className="fa fa-angle-left btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center" style={{ width: '35px', height: 'auto'}} onClick={goAheadIndexScreenshot}></div>
-                                    <img src={`${screenshots.results[numberIndexScreenshot].image}`} style={{width: '500px', height: '300px'}}></img>
+                                    <img className="responsive-img" src={`${screenshots.results[numberIndexScreenshot].image}`}></img>
                                     <div className="fa fa-angle-right btn btn-outline-light btn-sm mb-2 rounded-pill align-self-center" style={{ width: '35px', height: 'auto'}} onClick={goBackIndexScreenshot}></div>
                                 </div>
                             </div>

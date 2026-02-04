@@ -27,7 +27,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg" style={{backgroundColor: '#202020'}}>
             <div className="container-fluid">
                 <NavLink className="navbar-brand fw-bold text-white" to={'/'}>GAMEDB</NavLink>
-                <NavLink to={'/'}><img src={icon} style={{width: '45px'}} /></NavLink>
+                <NavLink className='me-auto' to={'/'}><img src={icon} style={{width: '45px'}} /></NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon btn btn-light"></span>
                 </button>
