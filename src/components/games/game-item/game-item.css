@@ -15,8 +15,25 @@
     transition: margin 0.5s ease;
 }
 
+.game-footer {
+    width: 200px;
+    height: 150px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .game-footer {
+        width: 125px;
+        height: 100px;
+    }
+}
+
 @media (max-width: 575.98px) {
     .game-item {
         height: 150px;
+    }
+
+    .game-footer {
+        width: 35px;
+        height: 35px;
     }
 }

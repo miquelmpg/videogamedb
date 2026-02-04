@@ -31,8 +31,8 @@ function GameItem({ id, name, background_image, rating, home, footer }) {
             {home && (favoriteToggle ? <DraggableItem id={id}>{gameContent}</DraggableItem> : <div>{gameContent}</div>)}
 
             {footer && <Link to={`/games/${id}`}>
-                            <div className="rounded-4"
-                                style={{backgroundImage: `URL(${background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', width: '200px', height: '150px'}}>
+                            <div className="rounded-4 game-footer"
+                                style={{backgroundImage: `URL(${background_image})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                             </div>
                         </Link>}
         </>

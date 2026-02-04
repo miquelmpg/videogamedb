@@ -26,7 +26,8 @@ All pages are **shareable via URL using query parameters**, so filtered searches
 - 💖 Favorites page with drag-and-drop functionality  
 - 📄 404 error page  
 - 📄 Pagination of results  
-- ➕ Add items (e.g., favorites)  
+- ➕ Add items (e.g., favorites)
+- 📱💻 **Fully responsive design**, adapting seamlessly to **mobile, tablet and desktop** screen resolutions  
 - 📱 Responsive design using Bootstrap  
 - 🔗 Navbar with logo/name linking to home  
 - 🔄 Dynamic navbar buttons depending on user session:
